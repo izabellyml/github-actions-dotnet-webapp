@@ -1,9 +1,9 @@
 name: Github4Woman Workflow Exercise
 
-on: 
+on:
   push:
-    branches:
-      - main
+  schedule:
+    - cron: '0 * * * *'
 
 jobs:  
   teste-workflow:
@@ -13,13 +13,9 @@ jobs:
         run: echo "Workflow rodando \õ/"
 
       - name: Checkout
-        uses: action/checkout@v2
+        uses: action/checkout@v3
 
-      - name: Teste de mensagem 2
-        run: echo "Passou do action checkout"
-
-      - name: Docker
-        uses: docker://alpine:3.8
-
-      - name: Teste de mensagem 3
-        run: echo "Passou do Docker Alpine"
+      - name: Data e hora
+        run: |
+          echo "Data e hora atuais:"
+          date
